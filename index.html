@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Om Derle | AI & Data Science</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<script>
+    let imgScale = 1;
+
+function openImageModal(src) {
+    const modal = document.getElementById("imageModal");
+    const img = document.getElementById("modalImage");
+
+    modal.style.display = "flex";
+    img.src = src;
+    imgScale = 1;
+    img.style.transform = "scale(1)";
+}
+
+function closeImageModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+function zoomInImage() {
+    imgScale += 0.15;
+    modalImage.style.transform = `scale(${imgScale})`;
+}
+
+function zoomOutImage() {
+    if (imgScale > 0.4) {
+        imgScale -= 0.15;
+        modalImage.style.transform = `scale(${imgScale})`;
+    }
+}
+
+/* Close on background click */
+document.getElementById("imageModal").addEventListener("click", e => {
+    if (e.target.id === "imageModal") closeImageModal();
+});
+function nextSlide(btn) {
+    const slider = btn.parentElement;
+    const images = slider.querySelectorAll("img");
+    let index = [...images].findIndex(img => img.classList.contains("active"));
+
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+}
+
+function prevSlide(btn) {
+    const slider = btn.parentElement;
+    const images = slider.querySelectorAll("img");
+    let index = [...images].findIndex(img => img.classList.contains("active"));
+
+    images[index].classList.remove("active");
+    index = (index - 1 + images.length) % images.length;
+    images[index].classList.add("active");
+}
+</script>
+<!-- ===== PROJECT IMAGE MODAL ===== -->
+<div id="imageModal" class="img-modal">
+    <span class="img-close" onclick="closeImageModal()">&times;</span>
+
+    <div class="img-modal-content">
+        <img id="modalImage">
+    </div>
+
+    <div class="img-zoom-controls">
+        <button onclick="zoomInImage()">+</button>
+        <button onclick="zoomOutImage()">−</button>
+    </div>
+</div>
+
+<body>
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+    <div class="nav-container">
+        <!-- Left: Home -->
+        <div class="nav-left">
+            <a href="#home" class="nav-logo">Home</a>
+        </div>
+
+        <!-- Right: Menu -->
+        <nav class="nav-right">
+            <a href="#about">About</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+<!-- Decorative Background Shapes -->
+<div class="bg-shapes">
+    <span class="shape shape-1"></span>
+    <span class="shape shape-2"></span>
+    <span class="shape shape-3"></span>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+        <h1>Hi, I’m <span>Om Derle</span></h1>
+        <p>AI & Data Science Engineering Student</p>
+        <p class="tagline">Building AI-powered analytics & no-code BI solutions</p>
+        <a href="#projects" class="btn">View Projects</a>
+    </div>
+</section>
+
+<!-- ===== ABOUT ME ===== -->
+<section class="container fade-in" id="about">
+
+    <h2>About Me</h2>
+
+    <p class="about-text">
+        👋 Hello! I’m <strong>Om Ramdas Derle</strong>, an <strong>Artificial Intelligence and Data Science
+        engineering student</strong> at <strong>K. K. Wagh Institute of Engineering Education & Research, Nashik</strong>.
+        I am passionate about building <strong>AI-driven solutions</strong> that transform raw data into
+        meaningful insights.
+    </p>
+
+    <ul class="about-points">
+        <li><span>🤖</span> Strong interest in <strong>Artificial Intelligence, Machine Learning, and Data Analytics</strong></li>
+        <li><span>📊</span> Skilled in <strong>Python, SQL, and data visualization</strong> for real-world problem solving</li>
+        <li><span>⚡</span> Focused on building <strong>No-Code / Low-Code BI platforms</strong> for non-technical users</li>
+        <li><span>🚀</span> Experienced in developing <strong>AI-powered applications and dashboards</strong></li>
+        <li><span>🎓</span> Final Year Project: <strong>SmartBiz AI Data Analytics</strong> – AI-driven business intelligence</li>
+        <li><span>🏆</span> Active participant in <strong>hackathons, workshops, and technical events</strong></li>
+        <li><span>🌱</span> <strong>NSS Volunteer</strong> contributing to community and social initiatives</li>
+        <li><span>🤝</span> Believer in <strong>continuous learning, innovation, and teamwork</strong></li>
+    </ul>
+
+</section>
+
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section class="container fade-in" id="certifications">
+
+    <h2>Certifications</h2>
+
+    <div class="cert-grid">
+        <div class="cert-card">
+            <img src="assets/certificates/powerbi.jpg"
+                 alt="Power BI Certificate"
+                 onclick="openModal(this.src)">
+            <p>Power BI Workshop – OfficeMaster</p>
+        </div>
+
+        <div class="cert-card">
+            <img src="assets/certificates/nptel.jpg"
+                 alt="NPTEL Certificate"
+                 onclick="openModal(this.src)">
+            <p>NPTEL – Design Thinking (IIT Madras)</p>
+        </div>
+
+        <div class="cert-card">
+            <img src="assets/certificates/python.jpg"
+                 alt="Python Certificate"
+                 onclick="openModal(this.src)">
+            <p>Python Programming – Scaler Topics</p>
+        </div>
+
+        <div class="cert-card">
+            <img src="assets/certificates/sunhack.jpeg"
+                 alt="SUNHACKS Certificate"
+                 onclick="openModal(this.src)">
+            <p>SUNHACKS-2K24 – Hackathon</p>
+        </div>
+    </div>
+</section>
+<!-- ===== EXTRA CURRICULAR ACTIVITIES ===== -->
+<section class="container fade-in" id="activities">
+    <h2>Extra-Curricular Activities</h2>
+
+    <!-- Activity 1: NSS -->
+    <div class="activity-card">
+        <div class="activity-header">
+            <h3>Volunteer</h3>
+            <span class="activity-org">National Service Scheme (NSS)</span>
+        </div>
+
+        <p class="activity-meta">
+            📍 Nashik, Maharashtra · ⏱ Sep 2024 – Present
+        </p>
+
+        <p class="activity-desc">
+            Actively involved in government-run NSS initiatives focused on
+            social service, leadership development, rural awareness, and
+            community development programs.
+        </p>
+
+        <div class="activity-images">
+            <img src="assets/activity/nss1.jpg" onclick="openImageModal(this.src)">
+            <img src="assets/activity/nss2.jpg" onclick="openImageModal(this.src)">
+            <img src="assets/activity/nss3.jpg" onclick="openImageModal(this.src)">
+        </div>
+    </div>
+
+    <!-- Activity 2: Elite Club -->
+    <div class="activity-card">
+        <div class="activity-header">
+            <h3>Member</h3>
+            <span class="activity-org">Elite Club, Nashik</span>
+        </div>
+
+        <p class="activity-meta">
+            📍 Nashik, Maharashtra · ⏱ Feb 2024 – Present
+        </p>
+
+        <p class="activity-desc">
+            Member of a youth-driven organization focused on leadership,
+            teamwork, and community welfare through initiatives like
+            E-Waste collection, food & cloth donation, and social drives.
+        </p>
+
+        <div class="activity-images">
+            <img src="assets/activity/elite1.jpg" onclick="openImageModal(this.src)">
+            <img src="assets/activity/elite2.jpg" onclick="openImageModal(this.src)">
+        </div>
+    </div>
+
+    <!-- Activity 3: Industrial Training -->
+    <div class="activity-card">
+        <div class="activity-header">
+            <h3>Industrial Training</h3>
+            <span class="activity-org">Golden Dream Software Solutions</span>
+        </div>
+
+        <p class="activity-meta">
+            📍 Nashik, Maharashtra · ⏱ Jul 2022 – Aug 2022
+        </p>
+        <div class="activity-images">
+            <img src="assets/activity/industry1.jpg" onclick="openImageModal(this.src)">
+        </div>
+        <p class="activity-desc">
+            Completed hands-on industrial training focused on web development,
+            software fundamentals, and real-world project exposure.
+        </p>
+    </div>
+
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section class="container fade-in">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        <span>Python</span>
+        <span>SQL</span>
+        <span>AI & ML</span>
+        <span>Data Analytics</span>
+        <span>Generative AI</span>
+        <span>No-Code BI</span>
+        <span>Power BI</span>
+        <span>Web Development</span>
+    </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section class="container fade-in" id="projects">
+    <h2>Projects</h2>
+
+    <div class="projects-grid">
+
+        <!-- ===== SmartBiz ===== -->
+        <div class="project-card project-with-img">
+
+            <div class="project-slider">
+                <img src="assets/projects/smartbiz1.jpeg" class="active" onclick="openImageModal(this.src)">
+                <img src="assets/projects/smartbiz2.jpeg" onclick="openImageModal(this.src)">
+                <img src="assets/projects/smartbiz3.jpeg" onclick="openImageModal(this.src)">
+                <img src="assets/projects/smartbiz4.jpeg" onclick="openImageModal(this.src)">
+                <img src="assets/projects/smartbiz5.jpeg" onclick="openImageModal(this.src)">
+
+                <button class="slide-btn left" onclick="prevSlide(this)">❮</button>
+                <button class="slide-btn right" onclick="nextSlide(this)">❯</button>
+            </div>
+
+
+            <div class="project-content">
+                <h3>SmartBiz AI Data Analytics</h3>
+                <p class="project-type">AI Web Application</p>
+                <p class="project-desc">
+                    A no-code AI-powered BI platform enabling instant insights,
+                    chat-based analytics, and dynamic dashboards.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== MockMaster ===== -->
+        <div class="project-card project-with-img">
+
+            <div class="project-slider">
+                <img src="assets/projects/mockmaster1.jpeg" class="active"openImageModal(this.src)>
+                <img src="assets/projects/mockmaster2.jpeg"openImageModal(this.src)>
+                <img src="assets/projects/mockmaster3.jpeg"openImageModal(this.src)>
+                <img src="assets/projects/mockmaster4.jpeg"openImageModal(this.src)>
+                <img src="assets/projects/mockmaster5.jpeg"openImageModal(this.src)>
+
+                <button class="slide-btn left" onclick="prevSlide(this)">❮</button>
+                <button class="slide-btn right" onclick="nextSlide(this)">❯</button>
+            </div>
+
+            <div class="project-content">
+                <h3>MockMaster – AI Mock Interview</h3>
+                <p class="project-type">AI Web Application</p>
+                <p class="project-desc">
+                    AI-driven interview preparation platform that generates
+                    domain-specific questions and provides real-time feedback.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== GPS Attendance ===== -->
+        <div class="project-card project-with-img">
+
+            <div class="project-slider">
+                <img src="assets/projects/gps1.png" class="active">
+                <img src="assets/projects/gps2.png">
+                <img src="assets/projects/gps3.png">
+
+                <button class="slide-btn left" onclick="prevSlide(this)">❮</button>
+                <button class="slide-btn right" onclick="nextSlide(this)">❯</button>
+            </div>
+
+            <div class="project-content">
+                <h3>GPS Based Attendance System</h3>
+                <p class="project-type">Android Application</p>
+                <p class="project-desc">
+                    Location-based attendance system using GPS verification,
+                    Google Maps API, and Firebase.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== Smart Shopping Cart ===== -->
+        <div class="project-card project-with-img">
+
+            <div class="project-slider">
+                <img src="assets/projects/cart1.jpeg" class="active">
+                <img src="assets/projects/cart2.jpeg">
+                
+
+                <button class="slide-btn left" onclick="prevSlide(this)">❮</button>
+                <button class="slide-btn right" onclick="nextSlide(this)">❯</button>
+            </div>
+
+            <div class="project-content">
+                <h3>Smart Shopping Cart System</h3>
+                <p class="project-type">IoT / Hardware</p>
+                <p class="project-desc">
+                    RFID-based smart cart system that auto-detects items,
+                    generates bills, and reduces checkout queues.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- ===== ACADEMIC MEMORIES & ACTIVITIES ===== -->
+<section class="container fade-in" id="memories">
+    <h2>Academic Memories & Activities</h2>
+
+    <!-- Polytechnic Memories -->
+    <div class="memory-card">
+        <h3>Computer Technology – Polytechnic</h3>
+        <p class="memory-desc">
+            A memorable journey filled with hands-on labs, technical events,
+            teamwork, competitions, and strong fundamentals in computer technology.
+        </p>
+
+        <div class="memory-grid">
+            <img src="assets/memories/dip1.jpeg" onclick="openImageModal(this.src)">
+            <img src="assets/memories/dip2.jpeg" onclick="openImageModal(this.src)">
+            <img src="assets/memories/dip3.jpeg" onclick="openImageModal(this.src)">
+            <img src="assets/memories/dip4.jpeg" onclick="openImageModal(this.src)">
+        </div>
+    </div>
+
+    <!-- Engineering Memories -->
+    <div class="memory-card">
+        <h3>Engineering – AI & Data Science</h3>
+        <p class="memory-desc">
+            Engineering life focused on AI projects, hackathons, workshops,
+            certifications, and building real-world problem-solving skills.
+        </p>
+
+        <div class="memory-grid">
+            <img src="assets/memories/eng1.jpeg" onclick="openImageModal(this.src)">
+            <img src="assets/memories/eng2.jpeg" onclick="openImageModal(this.src)">
+            <img src="assets/memories/eng3.jpeg" onclick="openImageModal(this.src)">
+            <img src="assets/memories/eng4.jpeg" onclick="openImageModal(this.src)">
+            <img src="assets/memories/eng5.jpeg" onclick="openImageModal(this.src)">
+            <img src="assets/memories/eng6.jpeg" onclick="openImageModal(this.src)">
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ===== CONTACT ===== -->
+<section class="container contact fade-in" id="contact">
+
+    <h2>Get In Touch</h2>
+
+    <p class="contact-intro">
+        Let’s connect! I’m always open to discussing projects, internships,
+        collaborations, or new opportunities in AI & Data Science.
+    </p>
+
+    <div class="contact-grid">
+        <!-- Email -->
+        <a href="mailto:omderle810@gmail.com" class="contact-card">
+            <span class="contact-icon">📧</span>
+            <h4>Email</h4>
+            <p>omderle810@gmail.com</p>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:+919422606323" class="contact-card">
+            <span class="contact-icon">📞</span>
+            <h4>Phone</h4>
+            <p>+91 94226 06323</p>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/om-derle-7b122414" target="_blank" class="contact-card">
+            <span class="contact-icon">💼</span>
+            <h4>LinkedIn</h4>
+            <p>Connect with me</p>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/omderle2004" target="_blank" class="contact-card">
+            <span class="contact-icon">💻</span>
+            <h4>GitHub</h4>
+            <p>View my projects</p>
+        </a>
+    </div>
+</section>
+
+
+<footer>
+    <p>© 2025 Om Derle | AI & Data Science</p>
+</footer>
+
+<!-- ===== CERTIFICATE MODAL (MUST BE HERE) ===== -->
+<div id="imgModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <div class="modal-content">
+        <img id="modalImg">
+    </div>
+
+    <div class="zoom-controls">
+        <button onclick="zoomIn()">+</button>
+        <button onclick="zoomOut()">−</button>
+    </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    let scale = 1;
+
+    function openModal(src) {
+        const modal = document.getElementById("imgModal");
+        const img = document.getElementById("modalImg");
+
+        modal.style.display = "flex";
+        img.src = src;
+        scale = 1;
+        img.style.transform = "scale(1)";
+    }
+
+    function closeModal() {
+        document.getElementById("imgModal").style.display = "none";
+    }
+
+    function zoomIn() {
+        scale += 0.15;
+        modalImg.style.transform = `scale(${scale})`;
+    }
+
+    function zoomOut() {
+        if (scale > 0.4) {
+            scale -= 0.15;
+            modalImg.style.transform = `scale(${scale})`;
+        }
+    }
+
+    document.getElementById("imgModal").addEventListener("click", e => {
+        if (e.target.id === "imgModal") closeModal();
+    });
+</script>
+
+</body>
+
+</html>
