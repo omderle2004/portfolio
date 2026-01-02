@@ -11,6 +11,20 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
+
+<!-- ===== PROJECT IMAGE MODAL ===== -->
+<div id="imageModal" class="img-modal">
+    <span class="img-close" onclick="closeImageModal()">&times;</span>
+
+    <div class="img-modal-content">
+        <img id="modalImage">
+    </div>
+
+    <div class="img-zoom-controls">
+        <button onclick="zoomInImage()">+</button>
+        <button onclick="zoomOutImage()">−</button>
+    </div>
+</div>
 <script>
     let imgScale = 1;
 
@@ -64,37 +78,28 @@ function prevSlide(btn) {
     images[index].classList.add("active");
 }
 </script>
-<!-- ===== PROJECT IMAGE MODAL ===== -->
-<div id="imageModal" class="img-modal">
-    <span class="img-close" onclick="closeImageModal()">&times;</span>
-
-    <div class="img-modal-content">
-        <img id="modalImage">
-    </div>
-
-    <div class="img-zoom-controls">
-        <button onclick="zoomInImage()">+</button>
-        <button onclick="zoomOutImage()">−</button>
-    </div>
-</div>
-
 <body>
 <!-- ===== NAVBAR ===== -->
 <header class="navbar">
     <div class="nav-container">
-        <!-- Left: Home -->
-        <div class="nav-left">
-            <a href="#home" class="nav-logo">Home</a>
-        </div>
 
-        <!-- Right: Menu -->
-        <nav class="nav-right">
-            <a href="#about">About</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact</a>
+        <!-- Left -->
+        <a href="#home" class="nav-logo">Home</a>
+
+        <!-- Hamburger -->
+        <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+
+        <!-- Menu -->
+        <nav class="nav-right" id="navMenu">
+            <a href="#about" onclick="closeMenu()">About</a>
+            <a href="#certifications" onclick="closeMenu()">Certifications</a>
+            <a href="#projects" onclick="closeMenu()">Projects</a>
+            <a href="#contact" onclick="closeMenu()">Contact</a>
         </nav>
+
     </div>
 </header>
+
 <!-- Decorative Background Shapes -->
 <div class="bg-shapes">
     <span class="shape shape-1"></span>
@@ -496,6 +501,14 @@ function prevSlide(btn) {
     document.getElementById("imgModal").addEventListener("click", e => {
         if (e.target.id === "imgModal") closeModal();
     });
+</script>
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+}
+function closeMenu() {
+    document.getElementById("navMenu").classList.remove("show");
+}
 </script>
 
 </body>

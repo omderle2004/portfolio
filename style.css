@@ -881,4 +881,102 @@ footer {
     position: relative;
     z-index: 1;
 }
+/* ===============================
+   MOBILE RESPONSIVE FIXES
+================================ */
+
+/* Tablets & below */
+@media (max-width: 900px) {
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .container {
+        margin: 50px auto;
+    }
+
+    .projects-grid,
+    .cert-grid,
+    .skills-grid,
+    .contact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+
+    /* NAVBAR */
+    .nav-toggle {
+        display: block;
+        font-size: 1.8rem;
+        color: #38bdf8;
+        cursor: pointer;
+    }
+
+    .nav-right {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #0b0f19;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 12px;
+        display: none;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    }
+
+    .nav-right.show {
+        display: flex;
+    }
+
+    /* HERO */
+    .hero {
+        padding: 100px 20px 60px;
+    }
+
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .tagline {
+        font-size: 0.95rem;
+    }
+
+    /* ABOUT */
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .about-points li {
+        font-size: 0.95rem;
+    }
+
+    /* SLIDER */
+    .project-slider {
+        height: 180px;
+    }
+
+    /* IMAGES */
+    .activity-images img,
+    .memory-grid img {
+        height: 100px;
+    }
+
+    /* CONTACT */
+    .contact-card {
+        padding: 18px;
+    }
+}
+
+/* Hide hamburger on desktop */
+.nav-toggle {
+    display: none;
+}
 
